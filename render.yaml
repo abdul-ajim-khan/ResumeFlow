@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: resume-builder-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: "7d"
+      - key: CLIENT_URL
+        value: "https://rusumebuilder-alpha.vercel.app"
+      - key: NODE_ENV
+        value: production
